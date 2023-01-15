@@ -6,6 +6,17 @@ const showRpsButton = document.querySelector('.rps');
 const showCgButton = document.querySelector('.cg');
 const showHomeButton = document.querySelectorAll('.home-button');
 const ticketButton = document.querySelector('.ticket-button');
+let playerSelection;
+let computerSelection;
+let cgPlayerSelection;
+let cgComputerSelection;
+let playerBet;
+let cgPlayerBet;
+let playerCoins;
+let round = 0;
+let cgRound = 0;
+let resultStatus = '';
+let cgResultStatus = '';
 
 //Common elements initialization 
 const newGameButton = document.querySelectorAll('.newGame');
@@ -36,13 +47,7 @@ const gameHistoryDisplay = document.querySelector('.history-container');
 const betInput = document.querySelector('.betInput');
 const instructionsModal = document.querySelector('.rps-instructions');
 const instructionsButton = document.querySelector('.instructions');
-let playerSelection;
-let computerSelection;
-let cgPlayerSelection;
-let cgComputerSelection;
-let playerBet;
-let cgPlayerBet;
-let playerCoins;
+const rpsTable = document.getElementById('rps-table');
 
 //Color Game page initialization
 const blueButton = document.querySelector('.cg-blue');
@@ -70,7 +75,7 @@ const gameHistoryCgDisplay = document.querySelector('.cg-history-container');
 const cgBetInput = document.querySelector('.cg-betInput');
 const cgInstructionsModal = document.querySelector('.cg-instructions');
 const cgInstructionsButton = document.querySelector('.instructions.cg');
-
+const cgTable = document.getElementById('cg-table');
 
 /////////////////////// General Buttons ///////////////////////
 
@@ -267,28 +272,6 @@ function displayPlayerCoins(playerCoins){
     playerCurrency.forEach((element) => element.textContent = ` ${playerCoins} Niels`);
 }
 
-//Function for winning a round
-function winRound(){
-    playerCoins += Number(playerBet);
-    displayPlayerCoins(playerCoins);
-}
-
-function cgWinRound(){
-    playerCoins += Number(cgPlayerBet);
-    displayPlayerCoins(playerCoins);
-}
-
-//Function for losing a round
-function loseRound(){
-    playerCoins -= Number(playerBet);
-    displayPlayerCoins(playerCoins);
-}
-
-function cgLoseRound(){
-    playerCoins -= Number(cgPlayerBet);
-    displayPlayerCoins(playerCoins);
-}
-
 /////////////////////// Rock Paper Scissors Functions ///////////////////////
 //Function for showing rock paper scissors instructions modal
 function showInstructionsModal(){
@@ -303,6 +286,7 @@ function getComputerChoice(){
     return computerChoice;
 }
 
+//Function for displaying computer selection
 function showComputerSelection(computerSelection){
     if (computerSelection === 'rock'){
         computerButton.src = './assets/images/rocks.png';
@@ -311,6 +295,93 @@ function showComputerSelection(computerSelection){
     } else if (computerSelection === 'scissors'){
         computerButton.src = './assets/images/scissors.png';
     }
+}
+
+//Function for winning a round
+function winRound(){
+    playerCoins += Number(playerBet);
+    displayPlayerCoins(playerCoins);
+    resultStatus = 'Won';
+}
+
+//Function for losing a round
+function loseRound(){
+    playerCoins -= Number(playerBet);
+    displayPlayerCoins(playerCoins);
+    resultStatus = 'Lost';
+}
+
+//Function for adding elements in game history
+function addWinGameHistory(computerSelection){
+    round += 1;
+    const newRow = document.createElement('tr');
+    const newRound = document.createElement('td');
+    const newPlayerSelection = document.createElement('td');
+    const newComputerSelection = document.createElement('td');
+    const newResult = document.createElement('td');
+    const newRoundText = document.createTextNode(round);
+    const newPlayerSelectionText = document.createTextNode(playerSelection);
+    const newComputerSelectionText = document.createTextNode(computerSelection);
+    const newResultText = document.createTextNode(resultStatus);
+    rpsTable.appendChild(newRow);
+    newRound.appendChild(newRoundText);
+    newPlayerSelection.appendChild(newPlayerSelectionText);
+    newComputerSelection.appendChild(newComputerSelectionText);
+    newResult.appendChild(newResultText);
+    newRow.appendChild(newRound);
+    newRow.appendChild(newPlayerSelection);
+    newRow.appendChild(newComputerSelection);
+    newRow.appendChild(newResult);
+    newResult.style.color = 'green';
+    newResult.style.fontWeight = 'bold';
+}
+
+function addLoseGameHistory(computerSelection){
+    round += 1;
+    const newRow = document.createElement('tr');
+    const newRound = document.createElement('td');
+    const newPlayerSelection = document.createElement('td');
+    const newComputerSelection = document.createElement('td');
+    const newResult = document.createElement('td');
+    const newRoundText = document.createTextNode(round);
+    const newPlayerSelectionText = document.createTextNode(playerSelection);
+    const newComputerSelectionText = document.createTextNode(computerSelection);
+    const newResultText = document.createTextNode(resultStatus);
+    rpsTable.appendChild(newRow);
+    newRound.appendChild(newRoundText);
+    newPlayerSelection.appendChild(newPlayerSelectionText);
+    newComputerSelection.appendChild(newComputerSelectionText);
+    newResult.appendChild(newResultText);
+    newRow.appendChild(newRound);
+    newRow.appendChild(newPlayerSelection);
+    newRow.appendChild(newComputerSelection);
+    newRow.appendChild(newResult);
+    newResult.style.color = 'red';
+    newResult.style.fontWeight = 'bold';
+}
+
+function addDrawGameHistory(computerSelection){
+    round += 1;
+    const newRow = document.createElement('tr');
+    const newRound = document.createElement('td');
+    const newPlayerSelection = document.createElement('td');
+    const newComputerSelection = document.createElement('td');
+    const newResult = document.createElement('td');
+    const newRoundText = document.createTextNode(round);
+    const newPlayerSelectionText = document.createTextNode(playerSelection);
+    const newComputerSelectionText = document.createTextNode(computerSelection);
+    const newResultText = document.createTextNode('Draw');
+    rpsTable.appendChild(newRow);
+    newRound.appendChild(newRoundText);
+    newPlayerSelection.appendChild(newPlayerSelectionText);
+    newComputerSelection.appendChild(newComputerSelectionText);
+    newResult.appendChild(newResultText);
+    newRow.appendChild(newRound);
+    newRow.appendChild(newPlayerSelection);
+    newRow.appendChild(newComputerSelection);
+    newRow.appendChild(newResult);
+    newResult.style.color = 'orange';
+    newResult.style.fontWeight = 'bold';
 }
 
 //Function for randomizer animation
@@ -330,7 +401,7 @@ function displayResults(){
     gameResult.textContent = playRound(playerSelection, computerSelection);
 }
 
-//Function
+//Function for play button
 function playRockPaperScissors(){
     const rpsInterval = setInterval(randomizeAnimation, 100);
     const stopRandomizeAnimation = () => clearInterval(rpsInterval);
@@ -339,41 +410,48 @@ function playRockPaperScissors(){
 }
 
 //Function for playing a round in rock paper scissors
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
     computerSelection = getComputerChoice();
     playerBet = betInput.value;
     if (playerCoins >= playerBet){
         if (playerSelection === computerSelection) {
             showComputerSelection(computerSelection);
+            addDrawGameHistory(computerSelection)
             return 'Draw!';
         } else if ((playerSelection === 'rock') && (computerSelection === 'scissors')){
             showComputerSelection(computerSelection);
             winRound();
+            addWinGameHistory(computerSelection);
             checkWonGame();
             return 'You win! Rock beats Scissors!';
         } else if ((playerSelection === 'rock') && (computerSelection === 'paper')){
             showComputerSelection(computerSelection);
             loseRound()
+            addLoseGameHistory(computerSelection);
             checkGameOver();
             return 'You lose! Paper beats Rock!';
         } else if ((playerSelection === 'paper') && (computerSelection === 'rock')){
             showComputerSelection(computerSelection);
             winRound();
+            addWinGameHistory(computerSelection);
             checkWonGame();
             return 'You win! Paper beats Rock!';
         } else if ((playerSelection === 'paper') && (computerSelection === 'scissors')){
             showComputerSelection(computerSelection);
             loseRound()
+            addLoseGameHistory(computerSelection);
             checkGameOver();
             return 'You lose! Scissors beats Paper!';
         } else if ((playerSelection === 'scissors') && (computerSelection === 'paper')){
             showComputerSelection(computerSelection);
             winRound();
+            addWinGameHistory(computerSelection);
             checkWonGame();
             return 'You win! Scissors beats Paper!';
         } else if ((playerSelection === 'scissors') && (computerSelection === 'rock')){
             showComputerSelection(computerSelection);
             loseRound()
+            addLoseGameHistory(computerSelection);
             checkGameOver();
             return 'You lose! Rock beats Scissors!';
         } else {
@@ -452,6 +530,69 @@ function showCgImageButton(cgComputerSelection){
     }
 }
 
+//Function for winning a round
+function cgWinRound(winCounter){
+    playerCoins += Number(cgPlayerBet);
+    displayPlayerCoins(playerCoins);
+    cgResultStatus = `Won ${winCounter}x`;
+}
+
+//Function for losing a round
+function cgLoseRound(){
+    playerCoins -= Number(cgPlayerBet);
+    displayPlayerCoins(playerCoins);
+    cgResultStatus = 'Lost';
+}
+
+//Function for adding elements in game history
+function cgAddWinGameHistory(cgComputerSelection){
+    cgRound += 1;
+    const cgNewRow = document.createElement('tr');
+    const cgNewRound = document.createElement('td');
+    const cgNewPlayerSelection = document.createElement('td');
+    const cgNewComputerSelection = document.createElement('td');
+    const cgNewResult = document.createElement('td');
+    const cgNewRoundText = document.createTextNode(cgRound);
+    const cgNewPlayerSelectionText = document.createTextNode(cgPlayerSelection);
+    const cgNewComputerSelectionText = document.createTextNode(cgComputerSelection);
+    const cgNewResultText = document.createTextNode(cgResultStatus);
+    cgTable.appendChild(cgNewRow);
+    cgNewRound.appendChild(cgNewRoundText);
+    cgNewPlayerSelection.appendChild(cgNewPlayerSelectionText);
+    cgNewComputerSelection.appendChild(cgNewComputerSelectionText);
+    cgNewResult.appendChild(cgNewResultText);
+    cgNewRow.appendChild(cgNewRound);
+    cgNewRow.appendChild(cgNewPlayerSelection);
+    cgNewRow.appendChild(cgNewComputerSelection);
+    cgNewRow.appendChild(cgNewResult);
+    cgNewResult.style.color = 'green';
+    cgNewResult.style.fontWeight = 'bold';
+}
+
+function cgAddLoseGameHistory(cgComputerSelection){
+    cgRound += 1;
+    const cgNewRow = document.createElement('tr');
+    const cgNewRound = document.createElement('td');
+    const cgNewPlayerSelection = document.createElement('td');
+    const cgNewComputerSelection = document.createElement('td');
+    const cgNewResult = document.createElement('td');
+    const cgNewRoundText = document.createTextNode(cgRound);
+    const cgNewPlayerSelectionText = document.createTextNode(cgPlayerSelection);
+    const cgNewComputerSelectionText = document.createTextNode(cgComputerSelection);
+    const cgNewResultText = document.createTextNode(cgResultStatus);
+    cgTable.appendChild(cgNewRow);
+    cgNewRound.appendChild(cgNewRoundText);
+    cgNewPlayerSelection.appendChild(cgNewPlayerSelectionText);
+    cgNewComputerSelection.appendChild(cgNewComputerSelectionText);
+    cgNewResult.appendChild(cgNewResultText);
+    cgNewRow.appendChild(cgNewRound);
+    cgNewRow.appendChild(cgNewPlayerSelection);
+    cgNewRow.appendChild(cgNewComputerSelection);
+    cgNewRow.appendChild(cgNewResult);
+    cgNewResult.style.color = 'red';
+    cgNewResult.style.fontWeight = 'bold';
+}
+
 //Function for randomizer animation
 function cgRandomizeAnimation(){
     const cgColors = ['blue', 'red', 'green', 'yellow', 'white', 'pink'];
@@ -468,7 +609,7 @@ function cgDisplayResults(){
     cgGameResult.textContent = cgPlayRound(cgComputerSelection);
 }
 
-//Function
+//Function for play button
 function playColorGame(){
     const cgInterval = setInterval(cgRandomizeAnimation, 100);
     const cgStopRandomizeAnimation = () => clearInterval(cgInterval);
@@ -476,11 +617,12 @@ function playColorGame(){
     setTimeout(cgDisplayResults, 2000);
 }
 
-function cgPlayRound(cgComputerSelection){
+//Function for playing a round in color game
+function cgPlayRound(cgComputerSelection, winCounter){
     cgComputerSelection = csGetComputerChoice();
     cgPlayerBet = cgBetInput.value;
     let losingCondition;
-    let winCounter = 0;
+    winCounter = 0;
     if (playerCoins >= cgPlayerBet){
         losingCondition = cgComputerSelection.includes(cgPlayerSelection);
         if (cgPlayerSelection === 'blue' || cgPlayerSelection === 'red' || cgPlayerSelection === 'green' || cgPlayerSelection === 'yellow' || cgPlayerSelection === 'white'|| cgPlayerSelection === 'pink'){
@@ -488,17 +630,19 @@ function cgPlayRound(cgComputerSelection){
                 showCgImageButton(cgComputerSelection);
                 hideCgImageButton();
                 cgLoseRound();
+                cgAddLoseGameHistory(cgComputerSelection);
                 checkGameOver();
                 return 'You lose!';
             } else {
                 for (i = 0; i < 3; i++){
                     if (cgComputerSelection[i] === cgPlayerSelection){
                         winCounter += 1;
-                        cgWinRound();
+                        cgWinRound(winCounter);
                     } 
                 }
                 showCgImageButton(cgComputerSelection);
                 hideCgImageButton();
+                cgAddWinGameHistory(cgComputerSelection);
                 checkWonGame();
                 return `You win ${winCounter}x!`;
             }
@@ -550,7 +694,6 @@ function checkWonGame(){
     }
 }
 
-
 //Function for checking game over
 function checkGameOver(){
     if (playerCoins === 0){
@@ -582,6 +725,40 @@ function checkGameOver(){
         overlay.classList.remove('hidden');
         return 'Game Over';
     }
+}
+
+//Function for resetting game history table
+function resetGameHistory(){
+    rpsTable.innerHTML = '';
+    cgTable.innerHTML = '';
+    const headingRow = document.createElement('tr');
+    const roundHeading = document.createElement('th');
+    const playerHeading = document.createElement('th');
+    const computerHeading = document.createElement('th');
+    const resultHeading = document.createElement('th');
+    const cgHeadingRow = document.createElement('tr');
+    const cgRoundHeading = document.createElement('th');
+    const cgPlayerHeading = document.createElement('th');
+    const cgComputerHeading = document.createElement('th');
+    const cgResultHeading = document.createElement('th');
+    roundHeading.textContent = 'Round';
+    playerHeading.textContent = 'Player';
+    computerHeading.textContent = 'Computer';
+    resultHeading.textContent = 'Result';
+    cgRoundHeading.textContent = 'Round';
+    cgPlayerHeading.textContent = 'Player';
+    cgComputerHeading.textContent = 'Computer';
+    cgResultHeading.textContent = 'Result';
+    headingRow.appendChild(roundHeading);
+    headingRow.appendChild(playerHeading);
+    headingRow.appendChild(computerHeading);
+    headingRow.appendChild(resultHeading);
+    cgHeadingRow.appendChild(cgRoundHeading);
+    cgHeadingRow.appendChild(cgPlayerHeading);
+    cgHeadingRow.appendChild(cgComputerHeading);
+    cgHeadingRow.appendChild(cgResultHeading);
+    rpsTable.appendChild(headingRow);
+    cgTable.appendChild(cgHeadingRow);
 }
 
 //Function for New Game
@@ -633,6 +810,9 @@ function newGame(){
     pinkImgButton.classList.add('hidden');
     playerSelection = '';
     cgPlayerSelection = '';
+    round = 0;
+    cgRound = 0;
+    resetGameHistory();
     displayPlayerCoins(playerCoins);
 }
 
@@ -687,6 +867,9 @@ function restartGame(){
     cgBetInput.value = Number('');
     playerSelection = '';
     cgPlayerSelection = '';
+    round = 0;
+    cgRound = 0;
+    resetGameHistory();
     displayPlayerCoins(playerCoins);
 }
 //Function for Quit Game
@@ -740,6 +923,9 @@ function quitGame(){
     cgBetInput.value = Number('');
     playerSelection = '';
     cgPlayerSelection = '';
+    round = 0;
+    cgRound = 0;
+    resetGameHistory();
     displayPlayerCoins(playerCoins);
 }
 
