@@ -1,0 +1,826 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+h2 {
+    font-family: Rye, 'sans-serif';
+    margin-bottom: 0.5em;
+}
+
+li {
+    margin-left: 2em;
+    margin-bottom: 0.5em;
+}
+
+ul {
+    padding-left: 1em;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    z-index: 2;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    background-color: white;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 3;
+}
+
+.modal.wingame, .modal.losegame {
+    width: 30%;
+    text-align: center;
+}
+
+.modal h3 {
+    margin-bottom: 1em;
+}
+
+.closeModalButton {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    font-size: 4rem;
+    color: #333;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.cg-closeModalButton {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    font-size: 4rem;
+    color: #333;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+
+/*------- BUTTON STYLES -------*/
+/* HOME BUTTONS */
+.choicebutton {
+    padding: 10px;
+    border-radius: 15px;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 8px #666;
+}
+
+.choicebutton:hover {
+    background-color: #940700;
+}
+
+.choicebutton:active {
+    box-shadow: 0 15px 10px #777;
+    transform: translateY(4px);
+}
+
+/*RPS BUTTONS  */
+.buttonGrp {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.cg-buttonGrp {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.button {
+    font-family: Roboto, 'sans-serif';
+    font-size: 1.5em;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 8px #666;
+    border: 4px solid #4dbdc3;
+}
+
+.button:hover {
+    background-color: #077ddf;
+}
+
+.button:active {
+    box-shadow: 0 15px 10px #777;
+    transform: translateY(4px);
+}
+
+.gamebutton {
+    padding: 10px;
+    border-radius: 15px;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 8px #666;
+}
+
+.gamebutton:hover {
+    background-color: #f6d003;
+}
+
+.gamebutton:active {
+    box-shadow: 0 15px 10px #777;
+    transform: translateY(4px);
+}
+
+/* CG Buttons */
+.cg.button {
+    border: 4px solid #d7255d;
+}
+
+.cg-player-buttons{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.colorbutton {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 8px #666;
+}
+
+.cg-computer.colorbutton {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 8px #666;
+}
+
+.cg.colorbutton:hover {
+    transform: scale(1.2);
+}
+
+.cg.colorbutton:active {
+    box-shadow: 0 15px 10px #777;
+    transform: translateY(4px);
+}
+
+.cg-blue {
+    background-color: blue;
+}
+
+.cg-red {
+    background-color: red;
+}
+
+.cg-green {
+    background-color: green;
+}
+
+.cg-yellow {
+    background-color: yellow;
+}
+
+.cg-white {
+    background-color: white;
+}
+
+.cg-pink {
+    background-color: pink;
+}
+
+/*---------- HOME PAGE ----------*/
+.home-grid-container {
+    background-image: url(../images/carnival.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    height: 100vh;
+    grid-template: 250px 1fr 40px/ 1fr;
+    grid-template-areas: 
+    "mainheader"
+    "gamechoice"
+    "homefooter";
+}
+
+/* HEADER */
+.home-header{
+    grid-area: mainheader;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1em;
+    font-family: Rye, 'sans-serif';
+    border: 5px solid #940700;
+}
+
+.home-header h1 {
+    font-size: 120px;
+    color: #940700;
+}
+
+/* GAME CHOICE */
+.game-choice {
+    grid-area: gamechoice;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    border-left: 5px solid #940700;
+    border-right: 5px solid #940700;
+}
+
+.choice-card {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    width: 400px;
+    border-radius: 10px;
+}
+
+.choice-card img {
+    width: 100%;
+    height: 100%;
+}
+
+/* FOOTER */
+.home-footer {
+    grid-area: homefooter;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #940700;
+    background-color: #940700;
+    color: white;
+    font-size: 0.8em;
+}
+
+.home-footer a {
+    text-decoration: none;
+    color: #4dbdc3;
+}
+
+
+
+/*---------- ROCK PAPER SCISSORS ----------*/
+.rps-grid-container {
+    background-image: url(../images/bg-image.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    height: 100vh;
+    grid-template: 70px 1fr 1fr 40px / 1fr 1fr 1fr;
+    grid-template-areas: 
+    "rpsheader rpsheader rpsheader"
+    "settings computer input"
+    "settings player history"
+    "rpsfooter rpsfooter rpsfooter";
+}
+
+/* HEADER */
+.rps-header{
+    grid-area: rpsheader;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1em;
+    font-family: Rye, 'sans-serif';
+    border: 5px solid #ff9eae;
+}
+
+.rps-header h1 {
+    font-size: 24px;
+    color: #ff9eae;
+    display: flex;
+    justify-content: center;
+}
+
+.rps-header img {
+    height: 55px;
+    cursor: pointer;
+}
+
+.header-item {
+    width: 33%;;
+}
+.player-items{
+    display: flex;
+    font-size: 1em;
+    width: 33%;
+    justify-content: flex-end;
+    font-weight: bold;
+}
+
+.playerCurrency {
+    color: #f6d003;
+}
+
+/* GAME SETTINGS */
+.game-settings {
+    grid-area: settings;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    border-left: 5px solid #ff9eae;
+}
+
+/* PLAYER INPUT */
+.player-input {
+    grid-area: input;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    border-right: 5px solid #ff9eae;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    min-width: 212px;
+    max-width: 340px;
+    width: 100%;
+    height: 280px;
+    border: 1px solid;
+    border-radius: 15px;
+    background-color: white;
+    border: 3px solid #4dbdc3;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+}
+
+.result-container {
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.bet-container {
+    margin-bottom: 0.5em;
+}
+
+.bet-container input {
+    width: 100%;
+    font-size: 1em;
+}
+
+.play.button{
+    width: 100%;
+    padding: 5px;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.wager-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 0.6em;
+    font-size: 1em;
+
+}
+
+.quarter.button, 
+.half.button, 
+.three-quarter.button, 
+.allin.button {
+    width: calc(50% - 1em);
+    font-size: 1em;
+    padding: 5px;
+}
+
+.player-input h2 {
+    font-size: 1em;
+}
+
+/* GAME HISTORY */
+.game-history {
+    grid-area: history;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    border-right: 5px solid #ff9eae;
+}
+
+.history-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 212px;
+    max-width: 340px;
+    width: 100%;
+    height: 280px;
+    padding: 1em;
+    border: 1px solid;
+    border-radius: 15px;
+    background-color: white;
+    border: 3px solid #4dbdc3;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+}
+
+table {
+    border-radius: 10px;
+    width: 100%;
+    font-size: 0.8em;
+}
+
+.game-history h2 {
+    font-size: 1em;
+}
+
+/* COMPUTER SECTION */
+.computer-section {
+    grid-area: computer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 0;
+}
+
+.computer-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 600px;
+    height: 280px;
+    padding: 1em;
+    border-radius: 15px;
+    border: 3px solid #4dbdc3;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+}
+
+.computer-card {
+    display: flex;
+    align-self: center;
+    width: 180px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 0.5em;
+}
+
+.computer-choice img {
+    width: 100%;
+    height: 100%;
+}
+
+/* PLAYER SECTION */
+.player-section {
+    grid-area: player;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 0;
+
+}
+
+.player-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 600px;
+    height: 280px;
+    padding: 1em;
+    border-radius: 15px;
+    border: 3px solid #4dbdc3;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+}
+
+.player-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 1em;
+}
+
+.player-card {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.player-card img {
+    width: 100%;
+    height: 100%;
+}
+
+/* FOOTER */
+.rps-footer {
+    grid-area: rpsfooter;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ff9eae;
+    background-color: #ff9eae;
+    color: white;
+    font-size: 0.8em;
+}
+
+.rps-footer a {
+    text-decoration: none;
+    color: #4dbdc3;
+}
+
+/*---------- COLOR GAME ----------*/
+.cg-grid-container {
+    background-image: url(../images/color-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    height: 100vh;
+    grid-template: 70px 1fr 1fr 40px / 1fr 1fr 1fr;
+    grid-template-areas: 
+    "cgheader cgheader cgheader"
+    "cgsettings cgcomputer cginput"
+    "cgsettings cgplayer cghistory"
+    "cgfooter cgfooter cgfooter";
+}
+
+/* HEADER */
+.cg-header{
+    grid-area: cgheader;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1em;
+    font-family: Rye, 'sans-serif';
+    border: 5px solid #603e95;
+}
+
+.cg-header h1 {
+    font-size: 24px;
+    color: #603e95;
+    display: flex;
+    justify-content: center;
+}
+
+.cg-header img {
+    height: 55px;
+    cursor: pointer;
+}
+
+.cg-header-item {
+    width: 33%;;
+}
+.cg-player-items{
+    display: flex;
+    font-size: 1em;
+    width: 33%;
+    justify-content: flex-end;
+    font-weight: bold;
+}
+
+#cg-playerCurrency {
+    color: #f6d003;
+}
+
+/* GAME SETTINGS */
+.cg-game-settings {
+    grid-area: cgsettings;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    border-left: 5px solid #603e95;
+}
+
+/* PLAYER INPUT */
+.cg-player-input {
+    grid-area: cginput;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    border-right: 5px solid #603e95;
+}
+
+.cg-input-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    min-width: 212px;
+    max-width: 340px;
+    width: 100%;
+    height: 280px;
+    border: 1px solid;
+    border-radius: 15px;
+    background-color: white;
+    border: 3px solid #d7255d;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+}
+
+.cg-result-container {
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.cg-bet-container {
+    margin-bottom: 0.5em;
+}
+
+.cg-bet-container input {
+    width: 100%;
+    font-size: 1em;
+}
+
+.cg-play.button{
+    width: 100%;
+    padding: 5px;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.cg-wager-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 0.6em;
+    font-size: 1em;
+
+}
+
+.cg-quarter.button, 
+.cg-half.button, 
+.cg-three-quarter.button, 
+.cg-allin.button {
+    width: calc(50% - 1em);
+    font-size: 1em;
+    padding: 5px;
+}
+
+.cg-player-input h2 {
+    font-size: 1em;
+}
+
+/* GAME HISTORY */
+.cg-game-history {
+    grid-area: cghistory;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1em 0.5em 1em;
+    border-right: 5px solid #603e95;
+}
+
+.cg-history-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 212px;
+    max-width: 340px;
+    width: 100%;
+    height: 320px;
+    padding: 1em;
+    border: 1px solid;
+    border-radius: 15px;
+    background-color: white;
+    border: 3px solid #d7255d;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+}
+
+table {
+    border-radius: 10px;
+    width: 100%;
+    font-size: 0.8em;
+}
+
+.cg-game-history h2 {
+    font-size: 1em;
+}
+
+/* COMPUTER SECTION */
+.cg-computer-section {
+    grid-area: cgcomputer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 0;
+}
+
+.cg-computer-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 600px;
+    height: 280px;
+    padding: 1em;
+    border-radius: 15px;
+    border: 3px solid #d7255d;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+}
+
+.cg-computer-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 1em;
+}
+
+.cg-computer-choice {
+    display: flex;
+    align-self: center;
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    margin-bottom: 0.5em;
+}
+
+.cg-computer-card img {
+    width: 100%;
+    height: 100%;
+}
+
+/* PLAYER SECTION */
+.cg-player-section {
+    grid-area: cgplayer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 0.5em 0;
+
+}
+
+.cg-player-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 600px;
+    height: 320px;
+    padding: 1em;
+    border-radius: 15px;
+    border: 3px solid #d7255d;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+}
+
+.cg-player-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cg-player-card {
+    display: flex;
+    justify-content: center;
+    height: 120px;
+    width: 120px;
+    border-radius: 10px;
+}
+
+.cg-player-card img {
+    width: 100%;
+    height: 100%;
+}
+
+/* FOOTER */
+.cg-footer {
+    grid-area: cgfooter;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #603e95;
+    background-color: #603e95;
+    color: white;
+    font-size: 0.8em;
+}
+
+.cg-footer a {
+    text-decoration: none;
+    color: #d7255d;
+}

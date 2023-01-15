@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARNIELVAL</title>
+    <link rel="stylesheet" href="./assets/stylesheets/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rye">
+    <script src="./assets/scripts/script.js" defer></script>
+</head>
+<body>
+    <!------------------ HOME PAGE ------------------>
+    <div id = "home-page" class = "">
+        <div class = "home-grid-container">
+            <!-- HOME HEADER -->
+            <div class = "home-header">
+                <h1>CARNIELVAL</h1>
+            </div>
+            <div class = "game-choice">
+                <div class = "choice-card">
+                    <button class = "rps choicebutton"><img src="./assets/images/rps-bg.png" alt="poster of rock paper and scissors"></button>
+                </div>
+                <div class = "choice-card">
+                    <button class = "cg choicebutton"><img src="./assets/images/cubes.png" alt="picture of color blocks"></button>
+                </div>
+            </div> 
+            <div class = "home-footer">
+                <p>Uplift Code Camp</p>
+                <p>Images by Freepik, Darius Dan, Najmun Nahar from <a href="https://www.flaticon.com/">Flaticons</a></p>
+            </div>         
+        </div>
+    </div>
+    <!------------------ ROCK PAPER SCISSORS ------------------>
+    <div id = "rock-paper-scissors" class = "hidden">
+        <div class = "rps-grid-container">
+            <!-- RPS HEADER -->
+            <div class = "rps-header">
+                <div class = "header-item">
+                    <img class = "home-button" src="./assets/images/circus-tent.png" alt="a picture of a circus tent">
+                </div>
+                <div class = "header-item">
+                    <h1>Rock-Paper-Scissors</h1>
+                </div>
+                <div class = "player-items">
+                    <span>Currency: </span>
+                    <span class = "playerCurrency"></span>
+                </div>
+            </div>
+            <!-- GAME SETTINGS -->
+            <div class = "game-settings">
+                <div class = "buttonGrp">
+                    <button class = "newGame button">New Game</button>
+                    <button class = 'instructions button'>Instructions</button>
+                    <button class = "restart button">Restart</button>
+                    <button class = "quit button">Quit Game</button>
+                </div>
+            </div>
+            <!-- PLAYER INPUT -->
+            <div class = "player-input">
+                <div class = "input-container">
+                    <h2>Wager</h2>
+                    <div class = "result-container">
+                        <span>Result: </span>
+                        <span class = "gameResult"></span>
+                    </div>
+                    <div class = "bet-container">
+                        <p>Enter the amount of your bet:</p>
+                        <input class = "betInput" type = "text">
+                    </div>
+                    <div class = "play-container">
+                        <button class = "play button">Play</button>
+                    </div>
+                    <div class = "wager-container">
+                        <button class = "quarter button">25%</button>
+                        <button class = "half button">50%</button>
+                        <button class = "three-quarter button">75%</button>
+                        <button class = "allin button">100%</button>
+                    </div>
+                </div>
+            </div>
+            <!-- GAME HISTORY -->
+            <div class = "game-history">
+                <div class = "history-container">
+                    <h2>Game History</h2>
+                    <div class = "history-table">
+                        <table>
+                            <tr>
+                                <th>Round</th>
+                                <th>Player</th>
+                                <th>Computer</th>
+                                <th>Result</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- COMPUTER -->
+            <div class = "computer-section">
+                <div class = "computer-container">
+                    <h2>Computer</h2>
+                    <div class = "computer-card">
+                        <div class = "computer-choice">
+                            <button class = "gamebutton"><img class = "computer choice" src ="./assets/images/question-mark.png" alt="A picture of three question marks"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PLAYER -->
+            <div class = "player-section">
+                <div class = "player-container">
+                    <h2>Player</h2>
+                    <div class = "player-buttons">
+                        <div class = "player-card">
+                            <button class = "rock gamebutton"><img src="./assets/images/rocks.png" alt="icon of rock"></button>
+                        </div>
+                        <div class = "player-card">
+                            <button class = "paper gamebutton"><img src="./assets/images/paper.png" alt="icon of paper"></button>
+                        </div>
+                        <div class = "player-card">
+                            <button class = "scissors gamebutton"><img src=".//assets/images/scissors.png" alt="icon of scissors"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FOOTER -->
+            <div class = "rps-footer">
+                <p>Uplift Code Camp</p>
+                <p>Images by Freepik, Darius Dan, Najmun Nahar from <a href="https://www.flaticon.com/">Flaticons</a></p>
+            </div>
+        </div>
+    </div>
+    <!------------------ COLOR GAME ------------------>
+    <div id = "color-game" class = "hidden">
+        <div class = "cg-grid-container">
+            <!-- RPS HEADER -->
+            <div class = "cg-header">
+                <div class = "cg-header-item">
+                    <img class = "home-button" src="./assets/images/circus-tent.png" alt="a picture of a circus tent">
+                </div>
+                <div class = "cg-header-item">
+                    <h1>Color Game</h1>
+                </div>
+                <div class = "cg-player-items">
+                    <span>Currency: </span>
+                    <span class = "playerCurrency"></span>
+                </div>
+            </div>
+            <!-- GAME SETTINGS -->
+            <div class = "cg-game-settings">
+                <div class = "cg-buttonGrp">
+                    <button class = "newGame cg button">New Game</button>
+                    <button class = 'instructions cg button'>Instructions</button>
+                    <button class = "restart cg button">Restart</button>
+                    <button class = "quit cg button">Quit Game</button>
+                </div>
+            </div>
+            <!-- PLAYER INPUT -->
+            <div class = "cg-player-input">
+                <div class = "cg-input-container">
+                    <h2>Wager</h2>
+                    <div class = "cg-result-container">
+                        <span>Result: </span>
+                        <span class = "cg-gameResult"></span>
+                    </div>
+                    <div class = "cg-bet-container">
+                        <p>Enter the amount of your bet:</p>
+                        <input class = "cg-betInput" type = "text">
+                    </div>
+                    <div class = "play-container">
+                        <button class = "cg-play cg button">Play</button>
+                    </div>
+                    <div class = "cg-wager-container">
+                        <button class = "quarter cg button">25%</button>
+                        <button class = "half cg button">50%</button>
+                        <button class = "three-quarter cg button">75%</button>
+                        <button class = "allin cg button">100%</button>
+                    </div>
+                </div>
+            </div>
+            <!-- GAME HISTORY -->
+            <div class = "cg-game-history">
+                <div class = "cg-history-container">
+                    <h2>Game History</h2>
+                    <div class = "cg-history-table">
+                        <table>
+                            <tr>
+                                <th>Round</th>
+                                <th>Player</th>
+                                <th>Computer</th>
+                                <th>Result</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- COMPUTER -->
+            <div class = "cg-computer-section">
+                <div class = "cg-computer-container">
+                    <h2>Computer</h2>
+                    <div class = cg-computer-buttons>
+                        <div class = "cg-computer-card">
+                            <div class = "cg-computer-choice">
+                                <button class = "cg-computer one colorbutton"><img class = "cg-computer-img choice" src ="./assets/images/question-mark.png" alt="A picture of three question marks"></button>
+                            </div>
+                            
+                        </div>
+                        <div class = "cg-computer-card">
+                            <div class = "cg-computer-choice">
+                                <button class = "cg-computer two colorbutton"><img class = "cg-computer-img choice" src ="./assets/images/question-mark.png" alt="A picture of three question marks"></button>
+                            </div>
+                        </div>
+                        <div class = "cg-computer-card">
+                            <div class = "cg-computer-choice">
+                                <button class = "cg-computer three colorbutton"><img class = "cg-computer-img choice" src ="./assets/images/question-mark.png" alt="A picture of three question marks"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PLAYER -->
+            <div class = "cg-player-section">
+                <div class = cg-player-container>
+                    <h2>Player</h2>
+                    <div class = "cg-player-buttons">
+                        <div class = "cg-player-card">
+                            <button class = "cg-blue cg colorbutton"><img class = "cg-blue-img hidden" src = "./assets/images/naira.png" alt = 'an icon of naira coin'></button>
+                        </div>
+                        <div class = "cg-player-card">
+                            <button class = "cg-red cg colorbutton"><img class = "cg-red-img hidden" src = "./assets/images/naira.png" alt = 'an icon of naira coin'></button>
+                        </div>
+                        <div class = "cg-player-card">
+                            <button class = "cg-green cg colorbutton"><img class = "cg-green-img hidden" src = "./assets/images/naira.png" alt = 'an icon of naira coin'></button>
+                        </div>
+                    </div>
+                    <div class = "cg-player-buttons">
+                        <div class = "cg-player-card">
+                            <button class = "cg-yellow cg colorbutton"><img class = "cg-yellow-img hidden" src = "./assets/images/naira.png" alt = 'an icon of naira coin'></button>
+                        </div>
+                        <div class = "cg-player-card">
+                            <button class = "cg-white cg colorbutton"><img class = "cg-white-img hidden" src = "./assets/images/naira.png" alt = 'an icon of naira coin'></button>
+                        </div>
+                        <div class = "cg-player-card">
+                            <button class = "cg-pink cg colorbutton"><img class = "cg-pink-img hidden" src = "./assets/images/naira.png" alt = 'an icon of naira coin'></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FOOTER -->
+            <div class = "cg-footer">
+                <p>Uplift Code Camp</p>
+                <p>Images by Freepik, Darius Dan, Najmun Nahar from <a href="https://www.flaticon.com/">Flaticons</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- MODALS -->
+    <div class = "modal rps-instructions hidden">
+        <button class="closeModalButton">&times;</button>
+        <h2>Rock Paper Scissors</h2>
+        <h3>How to Play:</h3>
+        <ol>
+            <li>Choose a weapon by clicking a button in the player section: <strong>Rock, Paper, or Scissors</strong></li>
+            <li>Enter the amount of Niel coins you want to wager in the wager section</li>
+            <li>Click the play button after locking your wager</li>
+            <ul>
+                <li>Rock wins over scissors</li>
+                <li>Scissors wins over Paper</li>
+                <li>Paper wins over rock</li>
+                <li>Same weapons will result in a draw</li>
+            </ul>
+            <li>Win the game by raising <strong>10000</strong> Niels</li>
+            <li>Enjoy! 😄</li> 
+        </ol>
+    </div>
+    <div class = "modal cg-instructions hidden">
+        <button class="closeModalButton">&times;</button>
+        <h2>Color Game</h2>
+        <h3>How to Play:</h3>
+        <ol>
+            <li>Choose a color by clicking a button in the player section: <strong>Blue, Red, Green, Yellow, White, or Pink</strong></li>
+            <li>Enter the amount of Niel coins you want to wager in the wager section</li>
+            <li>Click the play button <em>to pull the string</em> after locking your wager</li>
+            <ul>
+                <li>There are three dice with each sides having six different colors</li>
+                <li>You will win the amount of coins you wagered with every color you selected matching the color generated by each dice</li>
+                <li>You can win up to <strong>1x, 2x, or 3x</strong> of your wager</li>
+            </ul>
+            <li>Win the game by raising <strong>10000</strong> Niels</li>
+            <li>Enjoy! 😄</li> 
+        </ol>
+    </div>
+    <div class = "modal wingame hidden">
+        <button class="closeModalButton">&times;</button>
+        <h2>Congratulations! 🏆</h2>
+        <h3>Wag ka na babalik, lugi kami! 💢</h3>        
+    </div>
+    <div class = "modal losegame hidden">
+        <button class="closeModalButton">&times;</button>
+        <h2>Game Over! 🎮❌</h2>
+        <h3>Hingi ka muna pera kay mama</h3>
+    </div>
+    <div class = "overlay hidden"></div>
+</body>
+</html>
