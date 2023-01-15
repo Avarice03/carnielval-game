@@ -32,6 +32,8 @@ const ticketOverlay = document.querySelector('.ticket-overlay');
 const closeModalButton = document.querySelectorAll('.closeModalButton');
 const winGameModal = document.querySelector('.wingame');
 const loseGameModal = document.querySelector('.losegame');
+const settingsModal = document.querySelector('.modal-settings');
+const cgSettingsModal = document.querySelector('.cg-modal-settings');
 
 //Rock Paper Scissors page initialization
 const rockButton = document.querySelector('.rock');
@@ -46,8 +48,9 @@ const playerInputDisplay = document.querySelector('.input-container');
 const gameHistoryDisplay = document.querySelector('.history-container');
 const betInput = document.querySelector('.betInput');
 const instructionsModal = document.querySelector('.rps-instructions');
-const instructionsButton = document.querySelector('.instructions');
+const instructionsButton = document.querySelectorAll('.instructions.rps');
 const rpsTable = document.getElementById('rps-table');
+const settingsButton = document.querySelector('.settings-button');
 
 //Color Game page initialization
 const blueButton = document.querySelector('.cg-blue');
@@ -74,8 +77,9 @@ const playerInputCgDisplay = document.querySelector('.cg-input-container');
 const gameHistoryCgDisplay = document.querySelector('.cg-history-container');
 const cgBetInput = document.querySelector('.cg-betInput');
 const cgInstructionsModal = document.querySelector('.cg-instructions');
-const cgInstructionsButton = document.querySelector('.instructions.cg');
+const cgInstructionsButton = document.querySelectorAll('.instructions.cg');
 const cgTable = document.getElementById('cg-table');
+const cgSettingsButton = document.querySelector('.cg-settings-button');
 
 /////////////////////// General Buttons ///////////////////////
 
@@ -89,9 +93,11 @@ ticketButton.addEventListener('click', closeModal);
 newGameButton.forEach((element) => element.addEventListener('click', newGame));
 restartButton.forEach((element) => element.addEventListener('click', restartGame));
 quitButton.forEach((element) => element.addEventListener('click', quitGame));
-instructionsButton.addEventListener('click', showInstructionsModal);
-cgInstructionsButton.addEventListener('click', showCgInstructionsModal);
+instructionsButton.forEach((element) => element.addEventListener('click', showInstructionsModal));
+cgInstructionsButton.forEach((element) => element.addEventListener('click', showCgInstructionsModal));
 closeModalButton.forEach(element => element.addEventListener('click', closeModal));
+settingsButton.addEventListener('click', showSettings);
+cgSettingsButton.addEventListener('click', cgShowSettings);
 overlay.addEventListener('click', closeModal);
 
 //Bet Input buttons
@@ -225,12 +231,24 @@ function showCgPage(){
     cgPage.classList.remove('hidden');
 }
 
+function showSettings(){
+    settingsModal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+}
+
+function cgShowSettings(){
+    cgSettingsModal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+}
+
 function closeModal(){
     instructionsModal.classList.add('hidden');
     cgInstructionsModal.classList.add('hidden');
     winGameModal.classList.add('hidden');
     loseGameModal.classList.add('hidden');
     ticketButton.classList.add('hidden');
+    settingsModal.classList.add('hidden');
+    cgSettingsModal.classList.add('hidden');
     overlay.classList.add('hidden');
     ticketOverlay.classList.add('hidden');
 }

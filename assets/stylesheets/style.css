@@ -59,7 +59,7 @@ ul {
     padding: 2em;
     border-radius: 10px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
-    z-index: 3;
+    z-index: 5;
 }
 
 .modal.wingame, .modal.losegame {
@@ -373,6 +373,10 @@ ul {
     color: #f6d003;
 }
 
+.settings {
+    display: none;
+}
+
 /* GAME SETTINGS */
 .game-settings {
     grid-area: settings;
@@ -640,6 +644,10 @@ table{
     color: #f6d003;
 }
 
+.cg-settings {
+    display: none;
+}
+
 /* GAME SETTINGS */
 .cg-game-settings {
     grid-area: cgsettings;
@@ -856,4 +864,300 @@ table {
 .cg-footer a {
     text-decoration: none;
     color: #d7255d;
+}
+
+/*-------------------- MEDIA QUERIES --------------------*/
+/*---------- FOR TABLET DEVICES ----------*/
+@media only screen and (min-width: 600px) and (max-width: 1024px){            
+    .modal {
+        width: 80%;
+    }
+    
+    .modal.wingame, .modal.losegame {
+        width: 70%;
+    }
+    
+    /*---------- HOME PAGE ----------*/
+    .home-grid-container {
+        background-image: url(../images/carnival.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: grid;
+        height: 100vh;
+        grid-template: 250px 1fr 30px/ 1fr;
+        grid-template-areas: 
+        "mainheader"
+        "gamechoice"
+        "homefooter";
+    }
+    
+    /* HEADER */
+    .home-header h1 {
+        font-size: 70px;
+    }
+    
+    /* GAME CHOICE */
+    .game-choice {
+        gap: 3em;
+    }
+    
+    .choice-card {
+        width: 250px;
+    }
+    
+    /* FOOTER */
+    .home-footer {
+        font-size: 0.6em;
+    }
+    
+    /*---------- ROCK PAPER SCISSORS ----------*/
+    .rps-grid-container {
+        background-image: url(../images/bg-image.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: grid;
+        height: 100vh;
+        grid-template: 70px 1fr 1fr 1fr 40px / 1fr 1fr;
+        grid-template-areas: 
+        "rpsheader rpsheader"
+        "computer computer"
+        "player player"
+        "input history"
+        "rpsfooter rpsfooter";
+    }
+    
+    /* HEADER */
+    .rps-header {
+        position: sticky;
+        top: 0px;
+        padding: 0.5em;
+    }    
+    .rps-header h1 {
+        font-size: 16px;
+    }
+    
+    .rps-header img {
+        height: 40px;
+    }
+
+    .player-items{
+        font-size: 0.8em;
+        width: calc(33% - 40px);
+    }
+
+    .settings {
+        display: flex;
+        margin-left: 10px;
+    }
+
+    .settings img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* GAME SETTINGS */
+    .game-settings {
+        display: none;
+        border-left: none;
+    }
+
+    .modal-settings {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40%;
+        background-color: white;
+        padding: 2em;
+        border-radius: 10px;
+        box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+        z-index: 3;
+    }
+
+    .modal-settings h2 {
+        text-align: center;
+    }
+    
+    /* PLAYER INPUT */
+    .player-input {
+        padding: 0.6em;
+        border-right: none;
+    }
+
+    .player-input p {
+        font-size: 0.8em;
+    }
+    
+    .result-container {
+        font-size: 0.8em;
+    }
+    
+    /* GAME HISTORY */
+    .game-history {
+        padding: 0.6em;
+        border-right: none;
+    }
+    
+    /* COMPUTER SECTION */
+    .computer-section {
+        padding: 0.5em;
+    }
+    
+    .computer-container {
+        width: 580px;
+        height: 250px;
+    }
+    
+    .computer-card {
+        width: 160px;
+    }
+    
+    /* PLAYER SECTION */
+    .player-section {
+        padding: 0.5em;
+    
+    }
+    
+    .player-container {
+        width: 580px;
+        height: 250px;
+    }
+    
+    .player-card {
+        width: 160px;
+    }
+    
+    /* FOOTER */
+    .rps-footer {
+        font-size: 0.6em;
+    }
+    
+    /*---------- COLOR GAME ----------*/
+    .cg-grid-container {
+        background-image: url(../images/color-bg.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: grid;
+        height: 100%;
+        grid-template: 70px 1fr 1fr 1fr 40px / 1fr 1fr;
+        grid-template-areas: 
+        "cgheader cgheader"
+        "cgcomputer cgcomputer"
+        "cgplayer cgplayer"
+        "cginput cghistory"
+        "cgfooter cgfooter";
+    }
+    
+    /* HEADER */
+    .cg-header{
+        position: sticky;
+        top: 0px;
+        padding: 0.5em;
+    }
+    
+    .cg-header h1 {
+        font-size: 16px;
+    }
+    
+    .cg-header img {
+        height: 45px;
+    }
+    
+    .cg-header-item {
+        font-size: 0.8em;
+        width: calc(33% - 40px);
+    }
+
+    .cg-settings {
+        display: flex;
+        margin-left: 10px;
+    }
+
+    .cg-settings img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* GAME SETTINGS */
+    .cg-game-settings {
+        display: none;
+        border-left: none;
+    }
+
+    .cg-modal-settings {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40%;
+        background-color: white;
+        padding: 2em;
+        border-radius: 10px;
+        box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+        z-index: 3;
+    }
+
+    .cg-modal-settings h2 {
+        text-align: center;
+    }
+    
+    /* PLAYER INPUT */
+    .cg-player-input {
+        padding: 0.6em;
+        border-right: none;
+    }
+    
+    .cg-input-container p{
+        font-size: 0.8em;
+    }
+    
+    .cg-result-container {
+        font-size: 0.8em;
+    }
+    
+    /* GAME HISTORY */
+    .cg-game-history {
+        padding: 0.6em;
+        border-right: none;
+    }
+    
+    .cg-history-container {
+        height: 280px;
+    }
+    
+    /* COMPUTER SECTION */
+    .cg-computer-section {
+        padding: 0.5em;
+    }
+    
+    .cg-computer-container {
+        width: 580px;
+        height: 250px;
+    }
+    
+    .cg-computer-choice {
+        width: 160px;
+        height: 160px;
+    }
+    
+    /* PLAYER SECTION */
+    .cg-player-section {
+        padding: 0.5em;
+    }
+    
+    .cg-player-container {
+        width: 580px;
+        height: 280px;
+    }
+    
+    .cg-player-card {
+        height: 100px;
+        width: 100px;
+    }
+    
+    /* FOOTER */
+    .cg-footer {
+        font-size: 0.6em;
+    }
 }

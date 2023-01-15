@@ -10,7 +10,7 @@
     <script src="./assets/scripts/script.js" defer></script>
 </head>
 <body>
-    <!------------------ HOME PAGE ------------------>
+    <!-- HOME PAGE -->
     <div id = "home-page" class = "">
         <div class = "home-grid-container">
             <!-- HOME HEADER -->
@@ -31,7 +31,7 @@
             </div>         
         </div>
     </div>
-    <!------------------ ROCK PAPER SCISSORS ------------------>
+    <!-- ROCK PAPER SCISSORS -->
     <div id = "rock-paper-scissors" class = "hidden">
         <div class = "rps-grid-container">
             <!-- RPS HEADER -->
@@ -46,12 +46,15 @@
                     <span>Currency: </span>
                     <span class = "playerCurrency"></span>
                 </div>
+                <div class = "settings">
+                    <img class = "settings-button" src ="./assets/images/settings.png" alt = "an icon of a gear">
+                </div>
             </div>
             <!-- GAME SETTINGS -->
             <div class = "game-settings">
                 <div class = "buttonGrp">
                     <button class = "newGame button">New Game</button>
-                    <button class = 'instructions button'>Instructions</button>
+                    <button class = 'instructions rps button'>Instructions</button>
                     <button class = "restart button">Restart</button>
                     <button class = "quit button">Quit Game</button>
                 </div>
@@ -123,7 +126,7 @@
             </div>
         </div>
     </div>
-    <!------------------ COLOR GAME ------------------>
+    <!-- COLOR GAME -->
     <div id = "color-game" class = "hidden">
         <div class = "cg-grid-container">
             <!-- RPS HEADER -->
@@ -137,6 +140,9 @@
                 <div class = "cg-player-items">
                     <span>Currency: </span>
                     <span class = "playerCurrency"></span>
+                </div>
+                <div class = "cg-settings">
+                    <img class = "cg-settings-button" src ="./assets/images/settings.png" alt = "an icon of a gear">
                 </div>
             </div>
             <!-- GAME SETTINGS -->
@@ -286,7 +292,27 @@
         <h3>Hingi ka muna pera kay mama</h3>
     </div>
     <div class = "modal ticket ">
-        <button class="ticket-button"><img src ='./assets/images/ticket.jpg'></button>  
+        <button class="ticket-button"><img src ='./assets/images/ticket.jpg' alt = "a picture of a circus ticket"></button>  
+    </div>
+    <div class = "modal-settings hidden">
+        <div class = "buttonGrp">
+            <button class="closeModalButton">&times;</button>
+            <h2>Settings</h2>
+            <button class = "newGame button">New Game</button>
+            <button class = 'instructions rps button'>Instructions</button>
+            <button class = "restart button">Restart</button>
+            <button class = "quit button">Quit Game</button>
+        </div>
+    </div>
+    <div class = "cg-modal-settings hidden">
+        <div class = "buttonGrp">
+            <button class="closeModalButton">&times;</button>
+            <h2>Settings</h2>
+            <button class = "newGame cg button">New Game</button>
+            <button class = 'instructions cg button'>Instructions</button>
+            <button class = "restart cg button">Restart</button>
+            <button class = "quit cg button">Quit Game</button>
+        </div>
     </div>
     <div class = "overlay hidden"></div>
     <div class = "ticket-overlay"></div>
