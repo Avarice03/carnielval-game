@@ -5,6 +5,7 @@ const cgPage = document.getElementById('color-game');
 const showRpsButton = document.querySelector('.rps');
 const showCgButton = document.querySelector('.cg');
 const showHomeButton = document.querySelectorAll('.home-button');
+const ticketButton = document.querySelector('.ticket-button');
 
 //Common elements initialization 
 const newGameButton = document.querySelectorAll('.newGame');
@@ -16,6 +17,7 @@ const halfButton = document.querySelectorAll('.half');
 const threeQuarterButton = document.querySelectorAll('.three-quarter');
 const allInButton = document.querySelectorAll('.allin');
 const overlay = document.querySelector('.overlay');
+const ticketOverlay = document.querySelector('.ticket-overlay');
 const closeModalButton = document.querySelectorAll('.closeModalButton');
 const winGameModal = document.querySelector('.wingame');
 const loseGameModal = document.querySelector('.losegame');
@@ -76,6 +78,7 @@ const cgInstructionsButton = document.querySelector('.instructions.cg');
 showHomeButton.forEach((element) => element.addEventListener('click', showHomePage));
 showRpsButton.addEventListener('click', showRpsPage);
 showCgButton.addEventListener('click', showCgPage);
+ticketButton.addEventListener('click', closeModal);
 
 //Game Settings Buttons
 newGameButton.forEach((element) => element.addEventListener('click', newGame));
@@ -85,8 +88,6 @@ instructionsButton.addEventListener('click', showInstructionsModal);
 cgInstructionsButton.addEventListener('click', showCgInstructionsModal);
 closeModalButton.forEach(element => element.addEventListener('click', closeModal));
 overlay.addEventListener('click', closeModal);
-
-
 
 //Bet Input buttons
 quarterButton.forEach((element) => element.addEventListener('click', setQuarterBet));
@@ -105,7 +106,7 @@ paperButton.addEventListener('click', selectPlayerButton);
 scissorsButton.addEventListener('click', selectPlayerButton);
 
 //Play button for Rock Paper Scissors
-playButton.addEventListener('click', () => gameResult.textContent = playRound(playerSelection, computerSelection));
+playButton.addEventListener('click', playRockPaperScissors);
 
 /////////////////////// Color Game Buttons ///////////////////////
 
@@ -124,7 +125,7 @@ whiteButton.addEventListener('click', cgSelectPlayerButton);
 pinkButton.addEventListener('click', cgSelectPlayerButton);
 
 //Play button for Color Game
-cgPlayButton.addEventListener('click', () => cgGameResult.textContent = cgPlayRound(cgComputerSelection));
+cgPlayButton.addEventListener('click', playColorGame);
 
 /////////////////////// Button Styles ///////////////////////
 
@@ -219,6 +220,16 @@ function showCgPage(){
     cgPage.classList.remove('hidden');
 }
 
+function closeModal(){
+    instructionsModal.classList.add('hidden');
+    cgInstructionsModal.classList.add('hidden');
+    winGameModal.classList.add('hidden');
+    loseGameModal.classList.add('hidden');
+    ticketButton.classList.add('hidden');
+    overlay.classList.add('hidden');
+    ticketOverlay.classList.add('hidden');
+}
+
 //Function for quarter bet
 function setQuarterBet(){
     playerBet = Math.round(0.25 * playerCoins);
@@ -285,14 +296,6 @@ function showInstructionsModal(){
     overlay.classList.remove('hidden');
 }
 
-function closeModal(){
-    instructionsModal.classList.add('hidden');
-    cgInstructionsModal.classList.add('hidden');
-    winGameModal.classList.add('hidden');
-    loseGameModal.classList.add('hidden');
-    overlay.classList.add('hidden');
-}
-
 //Function for getting computer's choice in rock paper scissors
 function getComputerChoice(){
     let choiceArr = ['rock', 'paper', 'scissors'];
@@ -308,6 +311,31 @@ function showComputerSelection(computerSelection){
     } else if (computerSelection === 'scissors'){
         computerButton.src = './assets/images/scissors.png';
     }
+}
+
+//Function for randomizer animation
+function randomizeAnimation(){
+    const rpsPics = [
+        './assets/images/rocks.png',
+        './assets/images/paper.png',
+        './assets/images/scissors.png'
+    ]
+    let rpsChoice = Math.floor(Math.random() * 3);
+    let rpsImage = rpsPics[rpsChoice];
+    computerButton.src = rpsImage;
+}
+
+//Function for displaying results
+function displayResults(){
+    gameResult.textContent = playRound(playerSelection, computerSelection);
+}
+
+//Function
+function playRockPaperScissors(){
+    const rpsInterval = setInterval(randomizeAnimation, 100);
+    const stopRandomizeAnimation = () => clearInterval(rpsInterval);
+    setTimeout(stopRandomizeAnimation, 2000);
+    setTimeout(displayResults, 2000);
 }
 
 //Function for playing a round in rock paper scissors
@@ -422,6 +450,30 @@ function showCgImageButton(cgComputerSelection){
     } else if (cgComputerSelection[2] === 'pink'){
         compChoiceThree.style.backgroundColor = 'pink';
     }
+}
+
+//Function for randomizer animation
+function cgRandomizeAnimation(){
+    const cgColors = ['blue', 'red', 'green', 'yellow', 'white', 'pink'];
+    let cgChoice1 = cgColors[Math.floor(Math.random() * 6)];
+    let cgChoice2 = cgColors[Math.floor(Math.random() * 6)];
+    let cgChoice3 = cgColors[Math.floor(Math.random() * 6)];
+    compChoiceOne.style.backgroundColor = cgChoice1;
+    compChoiceTwo.style.backgroundColor = cgChoice2;
+    compChoiceThree.style.backgroundColor = cgChoice3;
+}
+
+//Function for displaying results
+function cgDisplayResults(){
+    cgGameResult.textContent = cgPlayRound(cgComputerSelection);
+}
+
+//Function
+function playColorGame(){
+    const cgInterval = setInterval(cgRandomizeAnimation, 100);
+    const cgStopRandomizeAnimation = () => clearInterval(cgInterval);
+    setTimeout(cgStopRandomizeAnimation, 2000);
+    setTimeout(cgDisplayResults, 2000);
 }
 
 function cgPlayRound(cgComputerSelection){

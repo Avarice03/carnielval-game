@@ -38,6 +38,17 @@ ul {
     z-index: 2;
 }
 
+.ticket-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    z-index: 2;
+}
+
 .modal {
     position: absolute;
     top: 50%;
@@ -56,6 +67,14 @@ ul {
     text-align: center;
 }
 
+.modal.ticket {
+    width: 19%;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    background-color: transparent;
+}
+
 .modal h3 {
     margin-bottom: 1em;
 }
@@ -71,15 +90,26 @@ ul {
     background: none;
 }
 
-.cg-closeModalButton {
-    position: absolute;
-    top: 0;
-    right: 1rem;
-    font-size: 4rem;
-    color: #333;
+.ticket img {
+    height: 150px;
+    border-radius: 10px;
+}
+
+.ticket-button {
+    background-color: white;
     cursor: pointer;
-    border: none;
-    background: none;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 0 8px #666;
+}
+
+.ticket-button:hover {
+    background-color: #077ddf;
+}
+
+.ticket-button:active {
+    box-shadow: 0 15px 10px #777;
+    transform: translateY(4px);
 }
 
 
