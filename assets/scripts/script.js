@@ -21,6 +21,7 @@ let cgResultStatus = '';
 //Common elements initialization 
 const newGameButton = document.querySelectorAll('.newGame');
 const restartButton = document.querySelectorAll('.restart');
+const muteButton = document.querySelectorAll('.mute');
 const quitButton = document.querySelectorAll('.quit');
 const playerCurrency = document.querySelectorAll('.playerCurrency');
 const quarterButton = document.querySelectorAll('.quarter');
@@ -35,6 +36,7 @@ const loseGameModal = document.querySelector('.losegame');
 const settingsModal = document.querySelector('.modal-settings');
 const cgSettingsModal = document.querySelector('.cg-modal-settings');
 const randomizerAudio = document.getElementById('randomizerEffect');
+const muteImg = document.querySelectorAll('.mute-img');
 
 //Rock Paper Scissors page initialization
 const rockButton = document.querySelector('.rock');
@@ -93,6 +95,7 @@ ticketButton.addEventListener('click', closeModal);
 //Game Settings Buttons
 newGameButton.forEach((element) => element.addEventListener('click', newGame));
 restartButton.forEach((element) => element.addEventListener('click', restartGame));
+muteButton.forEach((element) => element.addEventListener('click', muteSounds));
 quitButton.forEach((element) => element.addEventListener('click', quitGame));
 instructionsButton.forEach((element) => element.addEventListener('click', showInstructionsModal));
 cgInstructionsButton.forEach((element) => element.addEventListener('click', showCgInstructionsModal));
@@ -212,7 +215,6 @@ function cgSelectPlayerButton(){
 }
 
 /////////////////////// GENERAL FUNCTIONS ///////////////////////
-
 //Functions for switching pages
 function showHomePage(){
     homePage.classList.remove('hidden');
@@ -254,6 +256,16 @@ function closeModal(){
     cgSettingsModal.classList.add('hidden');
     overlay.classList.add('hidden');
     ticketOverlay.classList.add('hidden');
+}
+
+// Function for mute button
+function muteSounds(){
+    randomizerAudio.muted = !randomizerAudio.muted;
+    if (randomizerAudio.muted) {
+        muteImg.forEach((element) => element.src = './assets/images/mute.png');
+    } else {
+        muteImg.forEach((element) => element.src = './assets/images/unmute.png');
+    }
 }
 
 //Function for quarter bet
@@ -668,7 +680,8 @@ function cgPlayRound(cgComputerSelection, winCounter){
                 return `You win ${winCounter}x!`;
             }
         } else {
-            return "Please choose a color!";
+            alert('Please choose a color!')
+            return 'Please choose a color!';
         }
         
     } else if (playerCoins === 0){

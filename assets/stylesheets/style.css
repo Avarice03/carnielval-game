@@ -310,7 +310,7 @@ ul {
     border: 2px solid #940700;
     background-color: #940700;
     color: white;
-    font-size: 0.8em;
+    font-size: 0.6em;
 }
 
 .home-footer a {
@@ -373,7 +373,15 @@ ul {
 }
 
 .playerCurrency {
-    color: #f6d003;
+    color: gold;
+    text-shadow:
+      0 0 3px white,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 82px yellow,
+      0 0 92px yellow,
+      0 0 102px yellow,
+      0 0 151px yellow;
 }
 
 .settings {
@@ -388,6 +396,17 @@ ul {
     justify-content: center;
     padding: 1em;
     border-left: 5px solid #ff9eae;
+}
+
+.mute.button {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mute-img {
+    height: 1.5em;
 }
 
 /* PLAYER INPUT */
@@ -585,7 +604,7 @@ table{
     border: 2px solid #ff9eae;
     background-color: #ff9eae;
     color: white;
-    font-size: 0.8em;
+    font-size: 0.6em;
 }
 
 .rps-footer a {
@@ -865,7 +884,7 @@ table {
     border: 2px solid #603e95;
     background-color: #603e95;
     color: white;
-    font-size: 0.8em;
+    font-size: 0.6em;
 }
 
 .cg-footer a {
@@ -909,7 +928,7 @@ table {
     
     /* FOOTER */
     .home-footer {
-        font-size: 0.6em;
+        font-size: 0.5em;
     }
     
     /*---------- ROCK PAPER SCISSORS ----------*/
@@ -1224,7 +1243,7 @@ table {
     
     /* FOOTER */
     .home-footer {
-        font-size: 0.6em;
+        font-size: 0.5em;
     }
     
     /*---------- ROCK PAPER SCISSORS ----------*/
@@ -1267,7 +1286,7 @@ table {
         flex-direction: column;
         align-items: flex-end;
         font-size: 0.5em;
-        width: calc(21% - 20px);
+        width: calc(21% - 25px);
     }
 
     .settings {
@@ -1277,8 +1296,8 @@ table {
     }
 
     .settings img {
-        width: 15px;
-        height: 15px;
+        width: 20px;
+        height: 20px;
     }
     
     /* GAME SETTINGS */
@@ -1371,7 +1390,7 @@ table {
     
     /* FOOTER */
     .rps-footer {
-        font-size: 0.6em;
+        font-size: 0.5em;
     }
     
     /*---------- COLOR GAME ----------*/
@@ -1521,7 +1540,7 @@ table {
     
     /* FOOTER */
     .cg-footer {
-        font-size: 0.6em;
+        font-size: 0.5em;
     }
 }
     
