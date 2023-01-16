@@ -36,6 +36,8 @@ const loseGameModal = document.querySelector('.losegame');
 const settingsModal = document.querySelector('.modal-settings');
 const cgSettingsModal = document.querySelector('.cg-modal-settings');
 const randomizerAudio = document.getElementById('randomizerEffect');
+const winningAudio = document.getElementById('winning-effect');
+const losingAudio = document.getElementById('losing-effect');
 const muteImg = document.querySelectorAll('.mute-img');
 
 //Rock Paper Scissors page initialization
@@ -261,6 +263,8 @@ function closeModal(){
 // Function for mute button
 function muteSounds(){
     randomizerAudio.muted = !randomizerAudio.muted;
+    winningAudio.muted != winningAudio.muted;
+    losingAudio.muted != losingAudio.muted;
     if (randomizerAudio.muted) {
         muteImg.forEach((element) => element.src = './assets/images/mute.png');
     } else {
@@ -724,6 +728,7 @@ function checkWonGame(){
         cgBetInput.value = Number('');
         winGameModal.classList.remove('hidden');
         overlay.classList.remove('hidden');
+        winningAudio.play();
         return 'Congratulations! You win!';
     }
 }
@@ -757,6 +762,7 @@ function checkGameOver(){
         cgBetInput.value = Number('');
         loseGameModal.classList.remove('hidden');
         overlay.classList.remove('hidden');
+        losingAudio.play();
         return 'Game Over';
     }
 }
