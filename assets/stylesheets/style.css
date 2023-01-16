@@ -1265,6 +1265,7 @@ table {
 
     .player-items{
         flex-direction: column;
+        align-items: flex-end;
         font-size: 0.5em;
         width: calc(21% - 20px);
     }

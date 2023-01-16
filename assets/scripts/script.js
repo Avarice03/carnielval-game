@@ -34,6 +34,7 @@ const winGameModal = document.querySelector('.wingame');
 const loseGameModal = document.querySelector('.losegame');
 const settingsModal = document.querySelector('.modal-settings');
 const cgSettingsModal = document.querySelector('.cg-modal-settings');
+const randomizerAudio = document.getElementById('randomizerEffect');
 
 //Rock Paper Scissors page initialization
 const rockButton = document.querySelector('.rock');
@@ -118,6 +119,7 @@ scissorsButton.addEventListener('click', selectPlayerButton);
 
 //Play button for Rock Paper Scissors
 playButton.addEventListener('click', playRockPaperScissors);
+playButton.addEventListener('click', () => randomizerAudio.play());
 
 /////////////////////// Color Game Buttons ///////////////////////
 
@@ -137,6 +139,7 @@ pinkButton.addEventListener('click', cgSelectPlayerButton);
 
 //Play button for Color Game
 cgPlayButton.addEventListener('click', playColorGame);
+cgPlayButton.addEventListener('click', () => randomizerAudio.play());
 
 /////////////////////// Button Styles ///////////////////////
 
@@ -423,8 +426,8 @@ function displayResults(){
 function playRockPaperScissors(){
     const rpsInterval = setInterval(randomizeAnimation, 100);
     const stopRandomizeAnimation = () => clearInterval(rpsInterval);
-    setTimeout(stopRandomizeAnimation, 2000);
-    setTimeout(displayResults, 2000);
+    setTimeout(stopRandomizeAnimation, 3500);
+    setTimeout(displayResults, 3500);
 }
 
 //Function for playing a round in rock paper scissors
@@ -631,8 +634,8 @@ function cgDisplayResults(){
 function playColorGame(){
     const cgInterval = setInterval(cgRandomizeAnimation, 100);
     const cgStopRandomizeAnimation = () => clearInterval(cgInterval);
-    setTimeout(cgStopRandomizeAnimation, 2000);
-    setTimeout(cgDisplayResults, 2000);
+    setTimeout(cgStopRandomizeAnimation, 3500);
+    setTimeout(cgDisplayResults, 3500);
 }
 
 //Function for playing a round in color game
