@@ -263,8 +263,8 @@ function closeModal(){
 // Function for mute button
 function muteSounds(){
     randomizerAudio.muted = !randomizerAudio.muted;
-    winningAudio.muted != winningAudio.muted;
-    losingAudio.muted != losingAudio.muted;
+    winningAudio.muted = !winningAudio.muted;
+    losingAudio.muted = !losingAudio.muted;
     if (randomizerAudio.muted) {
         muteImg.forEach((element) => element.src = './assets/images/mute.png');
     } else {
