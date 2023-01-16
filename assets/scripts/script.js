@@ -947,4 +947,4 @@ function quitGame(){
     displayPlayerCoins(playerCoins);
 }
 
-quitGame();
+newGame();
