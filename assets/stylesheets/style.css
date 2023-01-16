@@ -876,9 +876,6 @@ table {
 /*-------------------- MEDIA QUERIES --------------------*/
 /*---------- FOR TABLET DEVICES ----------*/
 @media only screen and (min-width: 600px) and (max-width: 1024px){            
-    body {
-        height: 100vh;
-    }
     .modal {
         width: 80%;
     }
@@ -917,6 +914,7 @@ table {
     
     /*---------- ROCK PAPER SCISSORS ----------*/
     .rps-grid-container {
+        height: 100%;
         grid-template: 70px 1fr 1fr 1fr 40px / 1fr 1fr;
         grid-template-areas: 
         "rpsheader rpsheader"
@@ -1039,6 +1037,7 @@ table {
     
     /*---------- COLOR GAME ----------*/
     .cg-grid-container {
+        height: 100%;
         grid-template: 70px 1fr 1fr 1fr 40px / 1fr 1fr;
         grid-template-areas: 
         "cgheader cgheader"
@@ -1201,7 +1200,7 @@ table {
     
     /*---------- HOME PAGE ----------*/
     .home-grid-container {
-        grid-template: 200px 1fr 30px/ 1fr;
+        grid-template: 200px auto 30px/ 1fr;
         grid-template-areas: 
         "mainheader"
         "gamechoice"
@@ -1230,7 +1229,8 @@ table {
     
     /*---------- ROCK PAPER SCISSORS ----------*/
     .rps-grid-container {
-        grid-template: 60px 1fr 1fr 1fr 1fr 40px /1fr;
+        height: 100%;
+        grid-template: 60px auto auto auto auto 40px /1fr;
         grid-template-areas: 
         "rpsheader"
         "computer"
@@ -1375,7 +1375,8 @@ table {
     
     /*---------- COLOR GAME ----------*/
     .cg-grid-container {
-        grid-template: 60px 1fr 1fr 1fr 1fr 40px / 1fr;
+        height: 100%;
+        grid-template: 60px auto auto auto auto 40px / 1fr;
         grid-template-areas: 
         "cgheader"
         "cgcomputer"
