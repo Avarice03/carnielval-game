@@ -249,6 +249,7 @@ ul {
     background-image: url(../images/carnival.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     display: grid;
     height: 100vh;
     grid-template: 250px 1fr 40px/ 1fr;
@@ -324,6 +325,7 @@ ul {
     background-image: url(../images/bg-image.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     display: grid;
     height: 100vh;
     grid-template: 70px 1fr 1fr 40px / 1fr 1fr 1fr;
@@ -356,6 +358,7 @@ ul {
 .rps-header img {
     height: 55px;
     cursor: pointer;
+    z-index: 3;
 }
 
 .header-item {
@@ -408,7 +411,7 @@ ul {
     height: 280px;
     border: 1px solid;
     border-radius: 15px;
-    background-color: white;
+    background-color: mintcream;
     border: 3px solid #4dbdc3;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
 }
@@ -479,7 +482,7 @@ ul {
     padding: 1em;
     border: 1px solid;
     border-radius: 15px;
-    background-color: white;
+    background-color: mintcream;
     border: 3px solid #4dbdc3;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
     overflow: auto;
@@ -508,7 +511,7 @@ table{
 .computer-container {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: mintcream;
     width: 600px;
     height: 280px;
     padding: 1em;
@@ -544,7 +547,7 @@ table{
 .player-container {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: mintcream;
     width: 600px;
     height: 280px;
     padding: 1em;
@@ -591,10 +594,14 @@ table{
 }
 
 /*---------- COLOR GAME ----------*/
-.cg-grid-container {
+#color-game {
     background-image: url(../images/color-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+}
+
+.cg-grid-container {
     display: grid;
     height: 100vh;
     grid-template: 70px 1fr 1fr 40px / 1fr 1fr 1fr;
@@ -679,7 +686,7 @@ table{
     height: 280px;
     border: 1px solid;
     border-radius: 15px;
-    background-color: white;
+    background-color: lavender;
     border: 3px solid #d7255d;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
 }
@@ -750,7 +757,7 @@ table{
     padding: 1em;
     border: 1px solid;
     border-radius: 15px;
-    background-color: white;
+    background-color: lavender;
     border: 3px solid #d7255d;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
     overflow: auto;
@@ -778,7 +785,7 @@ table {
 .cg-computer-container {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: lavender;
     width: 600px;
     height: 280px;
     padding: 1em;
@@ -820,7 +827,7 @@ table {
 .cg-player-container {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: lavender;
     width: 600px;
     height: 320px;
     padding: 1em;
@@ -869,6 +876,9 @@ table {
 /*-------------------- MEDIA QUERIES --------------------*/
 /*---------- FOR TABLET DEVICES ----------*/
 @media only screen and (min-width: 600px) and (max-width: 1024px){            
+    body {
+        height: 100vh;
+    }
     .modal {
         width: 80%;
     }
@@ -879,11 +889,6 @@ table {
     
     /*---------- HOME PAGE ----------*/
     .home-grid-container {
-        background-image: url(../images/carnival.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        display: grid;
-        height: 100vh;
         grid-template: 250px 1fr 30px/ 1fr;
         grid-template-areas: 
         "mainheader"
@@ -912,11 +917,6 @@ table {
     
     /*---------- ROCK PAPER SCISSORS ----------*/
     .rps-grid-container {
-        background-image: url(../images/bg-image.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        display: grid;
-        height: 100vh;
         grid-template: 70px 1fr 1fr 1fr 40px / 1fr 1fr;
         grid-template-areas: 
         "rpsheader rpsheader"
@@ -946,8 +946,9 @@ table {
     }
 
     .settings {
-        display: flex;
+        display: block;
         margin-left: 10px;
+        z-index: 1;
     }
 
     .settings img {
@@ -1004,7 +1005,9 @@ table {
     }
     
     .computer-container {
-        width: 580px;
+        min-width: 580px;
+        max-width: 720px;
+        width: 100%;
         height: 250px;
     }
     
@@ -1019,7 +1022,9 @@ table {
     }
     
     .player-container {
-        width: 580px;
+        min-width: 580px;
+        max-width: 720px;
+        width: 100%;
         height: 250px;
     }
     
@@ -1034,12 +1039,6 @@ table {
     
     /*---------- COLOR GAME ----------*/
     .cg-grid-container {
-        background-image: url(../images/color-bg.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        display: grid;
-        height: 100%;
         grid-template: 70px 1fr 1fr 1fr 40px / 1fr 1fr;
         grid-template-areas: 
         "cgheader cgheader"
@@ -1063,15 +1062,16 @@ table {
     .cg-header img {
         height: 45px;
     }
-    
-    .cg-header-item {
+
+    .cg-player-items{
         font-size: 0.8em;
         width: calc(33% - 40px);
     }
 
     .cg-settings {
-        display: flex;
+        display: block;
         margin-left: 10px;
+        z-index: 1;
     }
 
     .cg-settings img {
@@ -1161,3 +1161,365 @@ table {
         font-size: 0.6em;
     }
 }
+
+/*---------- FOR MOBILE DEVICES ----------*/
+@media only screen and (min-width: 320px) and (max-width: 600px){
+    .modal {
+        width: 80%;
+    }
+    
+    .modal.wingame, .modal.losegame {
+        width: 70%;
+    }
+
+    .ticket-button {
+        height: 120px;
+    }
+
+    .ticket img {
+        height: 120px;
+    }
+
+    .closeModalButton {
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+        font-size: 2rem;
+        color: #333;
+        cursor: pointer;
+        border: none;
+        background: none;
+    }
+
+    .rps-instructions, .cg-instructions {
+        font-size: 0.9em;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+    
+    /*---------- HOME PAGE ----------*/
+    .home-grid-container {
+        grid-template: 200px 1fr 30px/ 1fr;
+        grid-template-areas: 
+        "mainheader"
+        "gamechoice"
+        "homefooter";
+    }
+    
+    /* HEADER */
+    .home-header h1 {
+        font-size: 30px;
+    }
+    
+    /* GAME CHOICE */
+    .game-choice {
+        gap: 1em;
+        flex-wrap: wrap;
+    }
+    
+    .choice-card {
+        width: 175px;
+    }
+    
+    /* FOOTER */
+    .home-footer {
+        font-size: 0.6em;
+    }
+    
+    /*---------- ROCK PAPER SCISSORS ----------*/
+    .rps-grid-container {
+        grid-template: 60px 1fr 1fr 1fr 1fr 40px /1fr;
+        grid-template-areas: 
+        "rpsheader"
+        "computer"
+        "player"
+        "input"
+        "history"
+        "rpsfooter";
+    }
+    
+    /* HEADER */
+    .rps-header {
+        position: sticky;
+        display: flex;
+        top: 0px;
+        padding: 0.3em;
+    }    
+    .rps-header h1 {
+        font-size: 14px;
+    }
+    
+    .rps-header img {
+        height: 40px;
+    }
+
+    .header-item {
+        width: 21%;
+    }
+
+    .header-item.gamename{
+        width: 58%;
+    }
+
+    .player-items{
+        flex-direction: column;
+        font-size: 0.5em;
+        width: calc(21% - 20px);
+    }
+
+    .settings {
+        display: block;
+        margin-left: 5px;
+        z-index: 1;
+    }
+
+    .settings img {
+        width: 15px;
+        height: 15px;
+    }
+    
+    /* GAME SETTINGS */
+    .game-settings {
+        display: none;
+        border-left: none;
+    }
+
+    .modal-settings {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        background-color: white;
+        padding: 2em;
+        border-radius: 10px;
+        box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+        z-index: 3;
+    }
+
+    .modal-settings h2 {
+        text-align: center;
+    }
+    
+    /* PLAYER INPUT */
+    .player-input {
+        padding: 0.6em;
+        border-right: none;
+    }
+
+    .input-container {
+        width: 280px;
+    }
+
+    .bet-container {
+        margin-bottom: 1em;
+    }
+
+    .player-input p {
+        font-size: 0.8em;
+    }
+    
+    .result-container {
+        font-size: 0.8em;
+    }
+    
+    /* GAME HISTORY */
+    .game-history {
+        padding: 0.6em;
+        border-right: none;
+    }
+
+    .history-container {
+        width: 280px;
+    }
+    
+    /* COMPUTER SECTION */
+    .computer-section {
+        padding: 0.5em;
+    }
+    
+    .computer-container {
+        width: 280px;
+        height: 170px;
+    }
+    
+    .computer-card {
+        width: 90px;
+    }
+    
+    /* PLAYER SECTION */
+    .player-section {
+        padding: 0.5em;
+    
+    }
+    
+    .player-container {
+        width: 280px;
+        height: 170px;
+    }
+
+    .player-buttons {
+        gap: 0.3em;
+    }
+    
+    .player-card {
+        width: 100px;
+    }
+    
+    /* FOOTER */
+    .rps-footer {
+        font-size: 0.6em;
+    }
+    
+    /*---------- COLOR GAME ----------*/
+    .cg-grid-container {
+        grid-template: 60px 1fr 1fr 1fr 1fr 40px / 1fr;
+        grid-template-areas: 
+        "cgheader"
+        "cgcomputer"
+        "cgplayer"
+        "cginput"
+        "cghistory"
+        "cgfooter";
+    }
+    
+    /* HEADER */
+    .cg-header{
+        position: sticky;
+        display: flex;
+        top: 0px;
+        padding: 0.3em;
+    }
+    
+    .cg-header h1 {
+        font-size: 14px;
+    }
+    
+    .cg-header img {
+        height: 40px;
+    }
+
+    .cg-header-item {
+        width: 21%;
+    }
+
+    .cg-header-item.gamename {
+        width: 58%;
+    }
+
+    .cg-player-items{
+        flex-direction: column;
+        font-size: 0.5em;
+        width: calc(21% - 20px);
+    }
+
+    .cg-settings {
+        display: block;
+        margin-left: 5px;
+        z-index: 1;
+    }
+
+    .cg-settings img {
+        width: 15px;
+        height: 15px;
+    }
+
+    /* GAME SETTINGS */
+    .cg-game-settings {
+        display: none;
+        border-left: none;
+    }
+
+    .cg-modal-settings {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        background-color: white;
+        padding: 2em;
+        border-radius: 10px;
+        box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+        z-index: 3;
+    }
+
+    .cg-modal-settings h2 {
+        text-align: center;
+    }
+    
+    /* PLAYER INPUT */
+    .cg-player-input {
+        padding: 0.6em;
+        border-right: none;
+    }
+
+    .cg-input-container {
+        width: 280px;
+    }
+
+    .cg-bet-container {
+        margin-bottom: 1em;
+    }
+    
+    .cg-input-container p{
+        font-size: 0.8em;
+    }
+    
+    .cg-result-container {
+        font-size: 0.8em;
+    }
+    
+    /* GAME HISTORY */
+    .cg-game-history {
+        padding: 0.6em;
+        border-right: none;
+    }
+    
+    .cg-history-container {
+        width: 280px;
+    }
+    
+    /* COMPUTER SECTION */
+    .cg-computer-section {
+        padding: 0.5em;
+    }
+    
+    .cg-computer-container {
+        width: 280px;
+        height: 150px;
+    }
+
+    .cg-computer-buttons {
+        display: flex;
+        justify-content: space-around;
+        gap: 0.1em;
+    }
+    
+    .cg-computer-choice {
+        width: 80px;
+        height: 80px;
+    }
+    
+    /* PLAYER SECTION */
+    .cg-player-section {
+        padding: 0.5em;
+    }
+    
+    .cg-player-container {
+        width: 280px;
+        height: 210px;
+    }
+    
+    .cg-player-card {
+        height: 70px;
+        width: 70px;
+    }
+    
+    /* FOOTER */
+    .cg-footer {
+        font-size: 0.6em;
+    }
+}
+    
